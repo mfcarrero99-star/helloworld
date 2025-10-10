@@ -1,7 +1,7 @@
 package com.accenture.juego;
 
 public abstract class Game {
-    protected String gamename;
+    private String gamename;
     protected User nombreusuario;
     protected Partida partida;
     
