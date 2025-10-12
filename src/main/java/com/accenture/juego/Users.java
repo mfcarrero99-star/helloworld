@@ -1,14 +1,14 @@
 package com.accenture.juego;
 
 public class Users {
-    private String nombre
+    private String user
     private Partida ultimaPartida
 
-    public User(String nombre){ //constructor de usuario
-        this.nombre = nombre
+    public User(String user){ //constructor de usuario
+        this.user = user
     }
     public String getUser(){ //getter de Usuario
-        return nombre;
+        return user;
     }
     public Partida getUltimaPartida(){ //getter de la ultima partida del usuario 
         return ultimaPartida;
