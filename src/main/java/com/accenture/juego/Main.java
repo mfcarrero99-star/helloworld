@@ -5,8 +5,9 @@ import java.util.Scanner;
 //mainclassnotfound. 
 public class Main
 {
-    public static void main( String[] args )
-    {Scanner scanner = new Scanner(System.in);
+    public static void main( String[] args ){
+        
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Bienvenido al juego de adivinar el número.");
         System.out.print("Ingresa tu nombre de usuario: ");
@@ -20,14 +21,23 @@ public class Main
 
         Gameable juego;
 
-        if (respuesta.equalsIgnoreCase("s") && usuario.getUltimaPartida() != null) {
-            juego = new GuessGame(user, true);
-        } else {
-            juego = new GuessGame(user);
+        boolean seguirJugando = true;
+
+        while (seguirJugando) {
+            GuessGame juego = new GuessGame(user, false); // siempre nueva partida; puedes preguntar si quiere reanudar
+            juego.startGame();
+            juego.closeGame();
+
+            // Preguntar si quiere jugar otra vez
+            System.out.print("¿Quieres jugar otra partida? (s/n): ");
+            String respuesta = scanner.nextLine().trim().toLowerCase();
+
+            if (!respuesta.equals("s") && !respuesta.equals("sí") && !respuesta.equals("si")) {
+                seguirJugando = false;
+                System.out.println("¡Hasta la próxima!");
+            }
         }
 
-        juego.startGame();
-        juego.closeGame();
-    };
+        scanner.close();
     }
 }
