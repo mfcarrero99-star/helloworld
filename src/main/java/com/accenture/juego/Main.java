@@ -1,11 +1,33 @@
 package com.accenture.juego;
+import java.util.Scanner;
 
 //clase Main para implementación de juego. No sé por qué no funciona el programa porque me está dando un error del tipo 
 //mainclassnotfound. 
 public class Main
 {
     public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    {Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bienvenido al juego de adivinar el número.");
+        System.out.print("Ingresa tu nombre de usuario: ");
+        String nombre = scanner.nextLine();
+
+        User user = new User(nombre);
+
+        // ¿Quiere reanudar la partida anterior?
+        System.out.print("¿Deseas reanudar tu última partida? (s/n): ");
+        String respuesta = scanner.nextLine();
+
+        Gameable juego;
+
+        if (respuesta.equalsIgnoreCase("s") && usuario.getUltimaPartida() != null) {
+            juego = new GuessGame(usuario, true);
+        } else {
+            juego = new GuessGame(usuario);
+        }
+
+        juego.startGame();
+        juego.closeGame();
+    };
     }
 }
