@@ -28,8 +28,4 @@ public class Partida {
     public Estado getEstado(){
         return estado;
     }
-
-    public boolean sePuedeSeguir(){
-        return estado == Estado.EN_JUEGO;
-    }
 }
