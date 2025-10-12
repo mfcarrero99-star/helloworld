@@ -69,7 +69,7 @@ public class GuessGame implements Gameable {
 
     @Override
     public void closeGame() {
-        System.out.println("Gracias por jugar" + "user.getNombre());
+        System.out.println("Gracias por jugar" + user.getUser() + ".");
     }
 
 
