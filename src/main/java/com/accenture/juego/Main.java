@@ -10,9 +10,9 @@ public class Main
 
         System.out.println("Bienvenido al juego de adivinar el número.");
         System.out.print("Ingresa tu nombre de usuario: ");
-        String nombre = scanner.nextLine();
+        String user = scanner.nextLine();
 
-        User user = new User(nombre);
+        Users user = new Users(user);
 
         // ¿Quiere reanudar la partida anterior?
         System.out.print("¿Deseas reanudar tu última partida? (s/n): ");
@@ -21,9 +21,9 @@ public class Main
         Gameable juego;
 
         if (respuesta.equalsIgnoreCase("s") && usuario.getUltimaPartida() != null) {
-            juego = new GuessGame(usuario, true);
+            juego = new GuessGame(user, true);
         } else {
-            juego = new GuessGame(usuario);
+            juego = new GuessGame(user);
         }
 
         juego.startGame();
