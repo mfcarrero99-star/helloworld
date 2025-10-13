@@ -14,14 +14,9 @@ public class GuessGame implements Gameable {
         this.partida = new Partida();
     }
 
-    @Override
+    
     public String getGamename() {
         return gamename;
-    }
-
-    @Override 
-    public Users getUsers() {
-        return user;
     }
 
     //lógica del juego, de momento muy simple. Simplemente empiezo con un estado en fallo, 
