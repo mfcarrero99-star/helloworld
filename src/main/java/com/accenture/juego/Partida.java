@@ -13,7 +13,6 @@ public class Partida {
         this.numeroSecreto = generarNumeroSecreto();
         this.estado = Estado.FALLO;
     }
-
     // metodo de generar numero secreto, podría estar en el constructor pero 
     //lo ponemos a parte por principio de responsabilidad. 
     public int generarNumeroSecreto(){
