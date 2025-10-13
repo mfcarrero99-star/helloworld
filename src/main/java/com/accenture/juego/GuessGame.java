@@ -6,12 +6,14 @@ public class GuessGame implements Gameable {
     private final String gamename = "GuessGame";
     private Users user;
     private Partida partida;
+    private Scanner scanner; //pasamos el scanner del main para que startgame no tenga uno dentro
 
     //Constructor simple, solo podemos empezar nueva partida y lo haremos cada vez que ingresemos
     //usuario
-    public GuessGame(Users user) {
+    public GuessGame(Users user, Scanner scanner) {
         this.user = user;
         this.partida = new Partida();
+        this.scanner = scanner;
     }
 
 
@@ -19,14 +21,13 @@ public class GuessGame implements Gameable {
     //leo el input. Si es igual que numeroSecreto, 
     @Override
     public void startGame() {
-        Scanner input = new Scanner(System.in);
         System.out.println("¡Empieza el juego! Adivina el número secreto entre 0 y 99.");
 
         while (partida.getEstado() == Estado.FALLO) {
             System.out.print("Tu intento: ");
 
             try {
-                int intento = Integer.parseInt(input.nextLine()); //leo el input y compruebo que es un entero
+                int intento = Integer.parseInt(scanner.nextLine()); //guardo el input del scanner en intento que tiene que ser un entero
 
                 if (intento < 1 || intento > 100) {
                     System.out.println("Número fuera de rango. Intenta entre 0 y 99.");

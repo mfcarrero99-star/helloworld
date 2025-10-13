@@ -18,7 +18,7 @@ public class Main
         boolean seguirJugando = true;
 
         while (seguirJugando) {
-            GuessGame juego = new GuessGame(user);
+            GuessGame juego = new GuessGame(user, scanner);
             juego.startGame();
             juego.closeGame();
 
