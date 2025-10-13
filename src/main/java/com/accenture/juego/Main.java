@@ -1,7 +1,6 @@
 package com.accenture.juego;
 import java.util.Scanner;
 
-//interfaz gameable
 public class Main
 {
     public static void main( String[] args ){
