@@ -2,75 +2,65 @@ package com.accenture.juego;
 import java.util.Scanner;
 
 public class GuessGame implements Gameable {
+
+    private final String gamename = "GuessGame";
     private Users user;
-    private final String gamename = "Adivina el número";
     private Partida partida;
-    private Scanner input = new Scanner(System.in);
-    //atributos de la clase, usuario, nombre del juego y partida. Inicializamos también el input
-    
-    public GuessGame(Users user) {//manera uno de iniciar el constructor, una partida nueva por defecto
+
+    //Constructor simple, solo podemos empezar nueva partida y lo haremos cada vez que ingresemos
+    //usuario
+    public GuessGame(Users user) {
         this.user = user;
         this.partida = new Partida();
-        usuer.setUltimaPartida(partida); //guardado automático
     }
 
-    //sobrecargamos el constructor para poder iniciar desde la última Partida.
-    //si reanudar es verdadero, vamos al getter de la ultima partida, 
-    // y sino, iniciamos de manera normal. 
-    public GuessGame(Users user, boolean reanudar) {
-        this.user = user;
-        if (reanudar && user.getUltimaPartida() != null) {
-            this.partida = user.getUltimaPartida();
-            System.out.println("Reanudando tu última partida...");
-        } else {
-            this.partida = new Partida();
-            user.setUltimaPartida(partida);
-        }
-    }
     @Override
     public String getGamename() {
         return gamename;
     }
-    
+
     @Override 
-    public Users getUser() {
+    public Users getUsers() {
         return user;
     }
-/*
- * Aquí tiene que ir la lógica del juego. ¿Por qué no iria en partida? Porque
- * en principio una partida comprende el ESTADO del juego, no su lógica.
- */
+
+    //lógica del juego, de momento muy simple. Simplemente empiezo con un estado en fallo, 
+    //leo el input. Si es igual que numeroSecreto, 
     @Override
     public void startGame() {
-       System.out.println("¡Empieza el juego! Adivina el número secreto entre 1 y 100.");
+        Scanner input = new Scanner(System.in);
+        System.out.println("¡Empieza el juego! Adivina el número secreto entre 0 y 99.");
 
-    while (partida.getEstado() == Estado.EN_JUEGO) {
-        System.out.print("Tu intento: ");
-        
-        try {
-            int intento = Integer.parseInt(input.nextLine());
+        while (partida.getEstado() == Estado.FALLO) {
+            System.out.print("Tu intento: ");
 
-            Estado resultado = partida.intentar(intento);
+            try {
+                int intento = Integer.parseInt(input.nextLine()); //leo el input y compruebo que es un entero
 
-            if (resultado == Estado.ACIERTO) {
-                System.out.println("¡Correcto! Has adivinado el número.");
-                partida.setEstado(Estado.GUARDADO);
-                usuario.setUltimaPartida(partida);
-            } else {
-                System.out.println("Incorrecto. Intenta de nuevo.");
+                if (intento < 1 || intento > 100) {
+                    System.out.println("Número fuera de rango. Intenta entre 0 y 99.");
+                    continue; //nota si es un entero fuera de rango
+                }
+
+                Estado resultado = partida.intentar(intento); //hago un update del estado
+
+                if (resultado == Estado.ACIERTO) {
+                    System.out.println("¡Correcto! Has adivinado el número.");
+                    break; //salgo del bucle porque ya he acertado 
+                } else {
+                    System.out.println("Incorrecto. Intenta de nuevo.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
             }
-
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
         }
-    }
 
+        input.close();
     }
 
     @Override
     public void closeGame() {
-        System.out.println("Gracias por jugar" + user.getUser() + ".");
+        System.out.println("Gracias por jugar, " + user.getUsers() + ".");
     }
-
-
 }
