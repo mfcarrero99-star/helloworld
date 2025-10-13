@@ -17,7 +17,7 @@ public class Partida {
     // metodo de generar numero secreto, podría estar en el constructor pero 
     //lo ponemos a parte por principio de responsabilidad. 
     public int generarNumeroSecreto(){
-       Random random = new Random();
+        Random random = new Random();
        return random.nextInt(100);
     }
 

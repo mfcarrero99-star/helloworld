@@ -14,10 +14,6 @@ public class GuessGame implements Gameable {
         this.partida = new Partida();
     }
 
-    
-    public String getGamename() {
-        return gamename;
-    }
 
     //lógica del juego, de momento muy simple. Simplemente empiezo con un estado en fallo, 
     //leo el input. Si es igual que numeroSecreto, 
@@ -50,8 +46,6 @@ public class GuessGame implements Gameable {
                 System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
             }
         }
-
-        input.close();
     }
 
     @Override
