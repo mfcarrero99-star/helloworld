@@ -1,4 +1,4 @@
-package com.accenture.juego;
+package com.accenture.juego.guessgame;
 /*
  * Uso de un enum para Estado. 
  */

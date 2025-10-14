@@ -3,4 +3,5 @@ package com.accenture.juego;
 public interface Gameable{
    void startGame();
    void closeGame();
+   String getGameName();
 }

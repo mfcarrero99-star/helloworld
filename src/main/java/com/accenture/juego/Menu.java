@@ -1,18 +1,36 @@
 package com.accenture.juego;
-import java.util.Scanner;
-// Clase que va a ser la pantalla inicial que interactua con el usuario 
-public class Menu {
-    public static void main(String[] args){
-    Repositorio repositorio = new Repositorio();
-    Scanner scanner = new Scanner(System.in);    
-    System.out.println("Hola, introduce tu nombre de usuario: ");
-    String nombre = scanner.nextLine();
-    User user = new User(nombre);
-    System.out.println("Perfecto"+ user.getNombre() + "Aquí te enseño todos los posibles juegos. Marca una opción escribiendo el número:");
-    repositorio.mostrar();
-    try{
-        int elección = Integer.parseInt(scanner.nextLine());
-        if(elección == get)
-    
+import  java.util.Scanner;
+/*
+ * Clase abstracta Menú. Hace referencia a la pantalla o menú inicial que ve el usuario y
+ * con el que interactua al entrar en un juego (Gameable). No solo permite iniciar el 
+ * juego sino también parar, reanudar, ver historial si existe, etc. 
+ */
+public abstract class Menu {
+    protected User user;
+    protected Scanner scanner; //paso el scanner del main
+    protected Gameable juego;
+//constructor del Menú que asegura que sea menú de un juego. 
+//Pasamos el usuario creado al identificarse en Main.
+public Menu(User user, Scanner scanner, Gameable juego) {
+    this.user = user;
+    this.scanner = scanner;
+    this.juego = juego;
 }
+
+
+public void mostrarBienvenida(String nombreJuego) {
+    System.out.println("Bienvenido" + user.getNombre() + "al juego" + juego.getGameName());
+    }
+
+public abstract void iniciar();
+
+public boolean deseaVolverAlMenuPrincipal() {
+    System.out.println("¿Deseas volver al menú principal? (s/n)");
+    String respuesta = scanner.nextLine().trim().toLowerCase();
+    return respuesta.equals("s") || respuesta.equals("si");
+    }
 }
+
+
+
+

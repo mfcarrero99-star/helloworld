@@ -1,4 +1,4 @@
-package com.accenture.juego;
+package com.accenture.juego.guessgame;
 import java.util.Random;
 /*Clase partida muy sencilla. Necesitamos estados, porque sino nunca sabemos
 cuando parar aunque ganemos. 

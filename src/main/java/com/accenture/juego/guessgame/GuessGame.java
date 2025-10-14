@@ -1,16 +1,19 @@
-package com.accenture.juego;
+package com.accenture.juego.guessgame;
 import java.util.Scanner;
+
+import com.accenture.juego.Gameable;
+import com.accenture.juego.User;
 
 public class GuessGame implements Gameable {
 
     private final String gamename = "GuessGame";
-    private Users user;
+    private User user;
     private Partida partida;
     private Scanner scanner; //pasamos el scanner del main para que startgame no tenga uno dentro
 
     //Constructor simple, solo podemos empezar nueva partida y lo haremos cada vez que ingresemos
     //usuario
-    public GuessGame(Users user, Scanner scanner) {
+    public GuessGame(User user, Scanner scanner) {
         this.user = user;
         this.partida = new Partida();
         this.scanner = scanner;
@@ -51,6 +54,6 @@ public class GuessGame implements Gameable {
 
     @Override
     public void closeGame() {
-        System.out.println("Gracias por jugar, " + user.getUsers() + ".");
+        System.out.println("Gracias por jugar, " + user.getNombre() + ".");
     }
 }
