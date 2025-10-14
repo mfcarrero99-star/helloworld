@@ -25,5 +25,16 @@ public class MenuGuessGame extends Menu {
     @Override
     public void iniciar(){
         mostrarBienvenida();
+
+        boolean jugar = true;
+        while (jugar) {
+            GuessGame guessGame = new GuessGame(user, scanner);
+            guessGame.startGame();
+            guessGame.closeGame();
+
+            System.out.print("¿Quieres jugar otra partida? (s/n): ");
+            String res = scanner.nextLine().trim().toLowerCase();
+            jugar = res.equals("s") || res.equals("si");
+        }
     }
 }

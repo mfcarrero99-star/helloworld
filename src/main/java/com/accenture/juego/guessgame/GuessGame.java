@@ -6,20 +6,23 @@ import com.accenture.juego.User;
 
 public class GuessGame implements Gameable {
 
-    private final String gamename = "GuessGame";
     private User user;
-    private Partida partida;
     private Scanner scanner; //pasamos el scanner del main para que startgame no tenga uno dentro
 
-    //Constructor simple, solo podemos empezar nueva partida y lo haremos cada vez que ingresemos
-    //usuario
+    
     public GuessGame(User user, Scanner scanner) {
         this.user = user;
-        this.partida = new Partida();
         this.scanner = scanner;
     }
 
+    @Override
+    public String getGameName(){
+        return "Guess Game";
+    }
 
+    public void startMenu(User user, Scanner scanner){
+        
+    }
     //lógica del juego, de momento muy simple. Simplemente empiezo con un estado en fallo, 
     //leo el input. Si es igual que numeroSecreto, 
     @Override

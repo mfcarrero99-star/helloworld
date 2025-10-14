@@ -18,7 +18,7 @@ public Menu(User user, Scanner scanner, Gameable juego) {
 }
 
 
-public void mostrarBienvenida(String nombreJuego) {
+public void mostrarBienvenida() {
     System.out.println("Bienvenido" + user.getNombre() + "al juego" + juego.getGameName());
     }
 
