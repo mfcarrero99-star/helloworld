@@ -28,9 +28,8 @@ public class MenuGuessGame extends Menu {
 
         boolean jugar = true;
         while (jugar) {
-            GuessGame guessGame = new GuessGame(user, scanner);
-            guessGame.startGame();
-            guessGame.closeGame();
+            juego.startGame();
+            juego.closeGame();
 
             System.out.print("¿Quieres jugar otra partida? (s/n): ");
             String res = scanner.nextLine().trim().toLowerCase();

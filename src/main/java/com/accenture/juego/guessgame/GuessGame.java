@@ -5,14 +5,11 @@ import com.accenture.juego.Gameable;
 import com.accenture.juego.User;
 
 public class GuessGame implements Gameable {
-
     private User user;
-    private Scanner scanner; //pasamos el scanner del main para que startgame no tenga uno dentro
+    private Scanner scanner;
 
-    
-    public GuessGame(User user, Scanner scanner) {
-        this.user = user;
-        this.scanner = scanner;
+    public GuessGame() {
+
     }
 
     @Override
@@ -22,18 +19,30 @@ public class GuessGame implements Gameable {
 
     @Override
     public void startMenu(User user, Scanner scanner){
-        MenuGuessGame menu = new MenuGuessGame(User user, Scanner scanner, this);
+        this.user = user;
+        this.scanner = scanner;
+        MenuGuessGame menu = new MenuGuessGame(user, scanner, this);
         menu.iniciar();
     }
     //lógica del juego, de momento muy simple. Simplemente empiezo con un estado en fallo, 
     //leo el input. Si es igual que numeroSecreto, 
     @Override
     public void startGame() {
+        if (scanner == null) {
+            throw new IllegalStateException("Scanner no inicializado en GuessGame. Se debe llamar a startMenu(user, scanner) antes de startGame().");
+        }
         System.out.println("¡Empieza el juego! Adivina el número secreto entre 0 y 99.");
         Partida partida = new Partida();
 
         while (partida.getEstado() == Estado.FALLO) {
             System.out.print("Tu intento: ");
+            String input = scanner.nextLine().trim();   
+            if (input.equalsIgnoreCase("FIN")) {
+
+            System.out.println("Has decidido terminar la partida. Volviendo al menú del juego...");
+
+            return; // 🚪 Sale del método y vuelve a MenuGuessGame.iniciar()
+            }
 
             try {
                 int intento = Integer.parseInt(scanner.nextLine()); //guardo el input del scanner en intento que tiene que ser un entero

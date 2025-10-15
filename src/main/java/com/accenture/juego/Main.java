@@ -1,6 +1,7 @@
 package com.accenture.juego;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.String;
 // Clase que va a ser la pantalla inicial que interactua con el usuario 
 public class Main { public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -22,13 +23,18 @@ public class Main { public static void main(String[] args) {
             System.out.print("Selecciona una opción: ");
             String input = scanner.nextLine();
 
+             if (input.equalsIgnoreCase("FIN")) {
+            System.out.println("Has decidido terminar la partida. Volviendo al menú del juego...");
+            return; // 🚪 Sale del método y vuelve a MenuGuessGame.iniciar()
+            }
+
             try {
                 int opcion = Integer.parseInt(input);
 
                 if (opcion == listajuegos.size() + 1) {
                     seguir = false;
                 } else if (opcion > 0 && opcion <= listajuegos.size()) {
-                    listajuegos.get(opcion - 1).startMenu(User user, Scanner scanner);
+                    listajuegos.get(opcion - 1).startMenu(user, scanner);
                 } else {
                     System.out.println("Opción inválida.");
                 }

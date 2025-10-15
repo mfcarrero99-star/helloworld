@@ -9,7 +9,7 @@ public class Repositorio {
 
     public Repositorio() {
         listajuegos = new ArrayList<>();
-        listajuegos.add(new GuessGame(null, null)); // el usuario y scanner se pasan en runtime
+        listajuegos.add(new GuessGame()); // el usuario y scanner se pasan en runtime
     }
 
     public void addjuego(Gameable juego){//posible implementación: si encuentro un nuevo Gameable, añadelo
