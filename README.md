@@ -4,6 +4,7 @@ of the Game and its Menu should not affect the rest of the logic i.e the Game Re
 Actual flow overview: Main, User, Menu (abstract), Gameable (interface), Repositorio (game repository, a collection of gameables)-> GuessGame (has its own package, and its own 
 logic, including GuessGame, MenuGuessGame, Partida, Estado). 
 Things that should be added and/or can be worked on:
-- Repositorio should be able to add only Gameables and create a new class with its name implementing Gameable and instance of said Gameable. 
+- Repositorio should be able to add only Gameables and create a new class with its name implementing Gameable and instance of said Gameable.
+- Gameable: revise logic, add or change some methods to deafult (optional methods for interfaces)
 - Cleaner code, handling exceptions, exception logger for exceptions not handled.
 - SpringBoot, implementing visual graphics. 
