@@ -6,6 +6,7 @@ logic, including GuessGame, MenuGuessGame, Partida, Estado).
 Things that should be added and/or can be worked on:
 -Observe that we instatiate each game in the Main. 
 - Repositorio needs better wording and commentaries made. 
+-Hangman has a bug, needs revising. 
 - Repositorio should be able to add only Gameable. Users cannot add Games, however if we pull this repo, and create a new file of
 type Gameable it will be added to Repositorio. Code should be changed so that not all games are instantiated, only the one the user 
 chooses. 
