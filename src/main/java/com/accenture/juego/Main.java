@@ -1,10 +1,9 @@
 package com.accenture.juego;
+
 import java.util.List;
 import java.util.Scanner;
-import java.lang.String;
-// Clase que va a ser la pantalla inicial que interactua con el usuario 
-public class Main {
 
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -15,45 +14,35 @@ public class Main {
         Repositorio repo = new Repositorio();
 
         boolean seguir = true;
-
         while (seguir) {
             System.out.println("\n--- MENÚ PRINCIPAL ---");
-
-            List<Gameable> listaJuegos = repo.getJuegos();
-
-            if (listaJuegos.isEmpty()) {
-                System.out.println("No hay juegos disponibles actualmente.");
-            } else {
-                for (int i = 0; i < listaJuegos.size(); i++) {
-                    System.out.println((i + 1) + ". " + listaJuegos.get(i).getGameName());
-                }
+            List<Gameable> listajuegos = repo.getJuegos();
+            for (int i = 0; i < listajuegos.size(); i++) {
+                System.out.println((i + 1) + ". " + listajuegos.get(i).getGameName());
             }
-            System.out.println((listaJuegos.size() + 1) + ". Salir");
+            System.out.println((listajuegos.size() + 1) + ". Salir");
 
             System.out.print("Selecciona una opción: ");
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine();
 
             try {
                 int opcion = Integer.parseInt(input);
 
-                if (opcion == listaJuegos.size() + 1) {
+                if (opcion == listajuegos.size() + 1) {
                     seguir = false;
-                }
-                else if (opcion > 0 && opcion <= listaJuegos.size()) {
-                    Gameable juegoSeleccionado = listaJuegos.get(opcion - 1);
-                    System.out.println("\n🎮 Has seleccionado: " + juegoSeleccionado.getGameName());
-                    juegoSeleccionado.startMenu(user, scanner);
-                } 
-                else {
-                    System.out.println("Opción inválida. Intenta nuevamente.");
+                } else if (opcion > 0 && opcion <= listajuegos.size()) {
+                    // Pasamos user y scanner a la instancia del juego
+                    listajuegos.get(opcion - 1).startMenu(user, scanner);
+                } else {
+                    System.out.println("Opción inválida.");
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Por favor, ingresa un número.");
+                System.out.println("Entrada inválida.");
             }
         }
 
-        System.out.println("¡Hasta la próxima, " + user.getNombre() + "!");
+        System.out.println("¡Hasta la próxima!");
         scanner.close();
     }
 }

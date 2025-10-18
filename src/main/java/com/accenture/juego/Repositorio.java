@@ -12,6 +12,7 @@ import com.accenture.juego.guessgame.GuessGame;
  * el constructor vacío. Recordemos que el usuario y el scanner se pasan en startMenu de Gameable, 
  * no en su constructor, luego en otros tipos de Gameables no debería de suponer un problema. 
  */
+import com.accenture.juego.hangmangame.HangmanGame;
 
 
 public class Repositorio {
@@ -19,9 +20,9 @@ public class Repositorio {
 
     public Repositorio() {
         listajuegos = new ArrayList<>();
-        listajuegos.add(new GuessGame()); // el usuario y scanner se pasan en runtime
+        listajuegos.add(new GuessGame()); 
+        listajuegos.add(new HangmanGame());
     }
-
 
     public List<Gameable> getJuegos() {
         return listajuegos;
