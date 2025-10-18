@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.reflections.Reflections;
 
-import com.accenture.juego.guessgame.GuessGame;
 /*
  * Clase que almacena todos los juegos disponibles, es decir, las clases que implementen
  * Gameable y que además las instancia para que el usuario pueda acceder a ellas. Como podemos
@@ -14,7 +13,6 @@ import com.accenture.juego.guessgame.GuessGame;
  * el constructor vacío. Recordemos que el usuario y el scanner se pasan en startMenu de Gameable, 
  * no en su constructor, luego en otros tipos de Gameables no debería de suponer un problema. 
  */
-import com.accenture.juego.hangmangame.HangmanGame;
 
 
 public class Repositorio {
