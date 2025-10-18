@@ -4,9 +4,11 @@ of the Game and its Menu should not affect the rest of the logic i.e the Game Re
 Actual flow overview: Main, User, Menu (abstract), Gameable (interface), Repositorio (game repository, a collection of gameables)-> GuessGame (has its own package, and its own 
 logic, including GuessGame, MenuGuessGame, Partida, Estado). 
 Things that should be added and/or can be worked on:
+-Observe that we instatiate each game in the Main. 
+- Repositorio needs better wording and commentaries made. 
 - Repositorio should be able to add only Gameable. Users cannot add Games, however if we pull this repo, and create a new file of
 type Gameable it will be added to Repositorio. Code should be changed so that not all games are instantiated, only the one the user 
 chooses. 
-- Cleaner code, handling exceptions, exception logger for exceptions not handled.
+- Needs: exception handling, reviewing code in order to simplify it. I'll do first the SpringBoot version then clean. 
 -Problems that will arise in the longrun: the class User might be distinguished from another class Player, where Player is a class inside each game. 
 - SpringBoot, implementing visual graphics. 

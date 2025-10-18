@@ -1,6 +1,8 @@
 package com.accenture.juego;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import org.reflections.Reflections;
 
 import com.accenture.juego.guessgame.GuessGame;
@@ -16,17 +18,46 @@ import com.accenture.juego.hangmangame.HangmanGame;
 
 
 public class Repositorio {
-    private List <Gameable> listajuegos;
+    private List <Class<?extends Gameable>> listajuegos;
 
     public Repositorio() {
         listajuegos = new ArrayList<>();
-        listajuegos.add(new GuessGame()); 
-        listajuegos.add(new HangmanGame());
+        buscarJuegos();
     }
 
-    public List<Gameable> getJuegos() {
-        return listajuegos;
+    public void buscarJuegos(){
+        Reflections reflections = new Reflections("com.accenture.juego"); // paquete base
+        Set<Class<? extends Gameable>> subTypes = reflections.getSubTypesOf(Gameable.class);
+
+        for (Class<? extends Gameable> juegoClass : subTypes) {
+            if (!java.lang.reflect.Modifier.isAbstract(juegoClass.getModifiers())) {
+                listajuegos.add(juegoClass);
+            }
+        }
+
+    }
+
+    public List<String> getNombresJuegos() {
+         List<String> nombres = new ArrayList<>();
+        for (Class<? extends Gameable> c : listajuegos) {
+            try {
+                Gameable juego = c.getDeclaredConstructor().newInstance(); // solo para obtener getGameName
+                nombres.add(juego.getGameName());
+            } catch (Exception e) {
+                nombres.add("Error al crear juego: " + c.getSimpleName());
+            }
+        }
+        return nombres;
+    }
+ public Class<? extends Gameable> getlistajuego(int index) {
+        if (index < 0 || index >= listajuegos.size()) return null;
+        return listajuegos.get(index);
+    }
+
+    public int cantidadJuegos() {
+        return listajuegos.size();
     }
 }
+
 
 
