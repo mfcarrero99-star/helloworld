@@ -31,7 +31,7 @@ public class GuessGame implements Gameable {
         if (scanner == null) {
             throw new IllegalStateException("Scanner no inicializado en GuessGame. Se debe llamar a startMenu(user, scanner) antes de startGame().");
         }
-        System.out.println("¡Empieza el juego! Adivina el número secreto entre 0 y 99.");
+        System.out.println("¡Empieza el juego! Adivina el número secreto entre 1 y 100. Recuerda que puedas finalizar la partida tecleando FIN");
         Partida partida = new Partida();
 
         while (partida.getEstado() == Estado.FALLO) {
@@ -45,10 +45,9 @@ public class GuessGame implements Gameable {
             }
 
             try {
-                int intento = Integer.parseInt(scanner.nextLine()); //guardo el input del scanner en intento que tiene que ser un entero
-
+                int intento = Integer.parseInt(input); // si no eres FIN te intento leer como entero
                 if (intento < 1 || intento > 100) {
-                    System.out.println("Número fuera de rango. Intenta entre 0 y 99.");
+                    System.out.println("Número fuera de rango. Intenta entre 1 y 100.");
                     continue; //nota si es un entero fuera de rango
                 }
 
@@ -62,7 +61,7 @@ public class GuessGame implements Gameable {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida. Por favor, ingresa un número entero.");
+                System.out.println("Entrada inválida. Por favor, ingresa un número entero o teclea FIN si quieres salir de la partida.");
             }
         }
     }
