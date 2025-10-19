@@ -27,8 +27,10 @@ public void mostrarBienvenida() {
 public abstract void iniciar();
 
 public boolean deseaVolverAlMenuPrincipal() {
-
-    }
+    output.print("¿Deseas volver al menú principal? (s/n)");
+    String respuesta = input.read().trim().toLowerCase();
+    return respuesta.equals("s")|| respuesta.equals("si") || respuesta.equals("sí");
+}
 }
 
 
