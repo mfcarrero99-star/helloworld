@@ -51,19 +51,20 @@ public class GuessGameController implements Gameable {
                     EstadoGuessGame estado = services.procesarIntento(partida, intento);
 
                     switch (estado) {
-                        case ACIERTO -> {
+                        case ACIERTO :
                             output.print("¡Correcto! El número era " + partida.getNumeroSecreto());
                             partidaActiva = false;
-                        }:
-                        case FALLO -> output.print("Incorrecto. Intenta otra vez."):
-                        case ERROR -> output.print("Entero fuera de rango. Introduce un entero entre 1 y 100."):
+                
+                        case FALLO : output.print("Incorrecto. Intenta otra vez.");
+                        case ERROR : output.print("Entero fuera de rango. Introduce un entero entre 1 y 100.");
                     }
                 } catch (NumberFormatException e) {
                     output.print("Entrada inválida. Escribe un número o FIN.");
                 }
             }
 
-            String respuesta = input.read("¿Quieres jugar otra partida? (s/n)");
+            output.print("¿Quieres jugar otra partida? (s/n)");
+            String respuesta = input.read();
             seguir = respuesta.equalsIgnoreCase("s") || respuesta.equalsIgnoreCase("si");
         }
     }
