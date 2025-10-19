@@ -41,7 +41,7 @@ public class GuessGame implements Gameable {
 
             System.out.println("Has decidido terminar la partida. Volviendo al menú del juego...");
 
-            return; // 🚪 Sale del método y vuelve a MenuGuessGame.iniciar()
+            return; // Sale del método y vuelve a MenuGuessGame.iniciar()
             }
 
             try {
