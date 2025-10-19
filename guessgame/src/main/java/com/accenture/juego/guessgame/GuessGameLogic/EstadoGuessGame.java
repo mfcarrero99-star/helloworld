@@ -1,5 +1,8 @@
 package com.accenture.juego.guessgame.guessgamelogic;
 
-public class EstadoGuessGame {
+public enum EstadoGuessGame {
+    ACIERTO,
+    FALLO,
+    ERROR
     
 }
