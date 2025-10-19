@@ -1,4 +1,4 @@
-package com.accenture.juego.guessgame.GuessGameLogic;
+package com.accenture.juego.guessgame.guessgamelogic;
 
 public class PartidaGuessGame {
     
